@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Shino's Cafe</title><style>
+        body{background-color: rgb(14, 95, 27);}
+    </style></head>
+    <body>
+        <h1>Welcome to Shino's Cafe!</h1>
+        <img src="Screenshot 2026-10-22 003812.png" alt="Shino- the owner of this cafe!">
+        <form method="POST">
+            <h2>MENU:</h2>
+            {%for coffee in MENU%}
+            <div>
+                <input type="checkbox" name="items" value="{{ loop.index0 }}">
+                <label>{{ coffee.name }}- Rs.{{ coffee.price }}</label>
+            </div>
+            {% endfor %}
+            <br>
+            <button type="submit">Checkout</button>
+        </form>
+        {%if ordered_items%}
+        <hr>
+        <h3>Your Order List :DDD</h3>
+        <ul>
+            {%for item in ordered_items%}
+            <li>{{ item.name }} - Rs. {{ item.price }}</li>
+            {% end for %}
+        </ul>
+        <h3>Total bill: Rs.{{ total }}</h3>
+        {% end if %}
+    </body>
+</html>
